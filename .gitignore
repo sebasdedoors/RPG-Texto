@@ -1,0 +1,19 @@
+﻿# Archivos compilados de Python
+__pycache__/
+*.py[cod]
+
+# Entornos virtuales
+venv/
+.venv/
+env/
+
+# Configuración de VS Code
+.vscode/
+
+# Configuración de PyCharm
+.idea/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+desktop.ini
