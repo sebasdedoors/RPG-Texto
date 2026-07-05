@@ -38,13 +38,15 @@ class Potion(Item):
             if self.effect_type == "heal":
                 for level, value in self.effects[self.effect_type].items():
                     if self.item_level == level:
-                        player.health += value
+                        health_max = player.health
+                        player.health = min(player.health + value, health_max)
                         print(f"{player.name} has used {self.name}, restoring {value} health.")
                         return 
             elif self.effect_type == "mana":
                 for level, value in self.effects[self.effect_type].items():
                     if self.item_level == level:
-                        player.mana += value
+                        mana_max = player.mana
+                        player.mana = min(player.mana + value, mana_max)
                         print(f"{player.name} has used {self.name}, restoring {value} mana.")
                         return
             elif self.effect_type == "strength_boost":
