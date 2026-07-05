@@ -7,10 +7,12 @@ class Player(Character):
         self.defTypePlayer(player_type)
         self.inventory = []
         self.xp = 0
+        self.weapon = None
+        self.armor = None
         
     player_types = {
         "warrior": {"strength": 5, "health": 20, "mana": -10},
-        "mage": {"strength": -2, "mana": 20},
+        "mage": {"strength": -2, "health": 10, "mana": 20},
         "healer": {"strength": -5, "health": 10, "mana": 15},
         "assassin": {"strength": 10, "health": -10, "mana": -10}
     }
@@ -27,12 +29,10 @@ class Player(Character):
     def gainXp(self, amount):
         self.xp += amount
 
-        if self.xp >= 100:
+        while self.xp >= 100:
             self.levelUp()
             self.xp -= 100
             print(f"{self.name} has leveled up! Current level: {self.level}")
-        else:
-            print(f"{self.name} gains {amount} XP. Total XP: {self.xp}")
         
     def levelUp(self):
         self.level += 1
@@ -44,4 +44,8 @@ class Player(Character):
         self.inventory.append(item)
         print(f"{self.name} has obtained {item.name}. Check it in your inventory!")
     
+    def getMaxHealth(self):
+        return self.player_types[self.player_type]["health"] + ((self.level - 1) * 5 + 100)
     
+    def getMaxMana(self):
+        return self.player_types[self.player_type]["mana"] + ((self.level - 1) * 3 + 100)
