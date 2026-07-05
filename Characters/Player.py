@@ -7,6 +7,8 @@ class Player(Character):
         self.defTypePlayer(player_type)
         self.inventory = []
         self.xp = 0
+        self.weapon = None
+        self.armor = None
         
     player_types = {
         "warrior": {"strength": 5, "health": 20, "mana": -10},
@@ -27,7 +29,7 @@ class Player(Character):
     def gainXp(self, amount):
         self.xp += amount
 
-        if self.xp >= 100:
+        while self.xp >= 100:
             self.levelUp()
             self.xp -= 100
             print(f"{self.name} has leveled up! Current level: {self.level}")
