@@ -1,4 +1,5 @@
 from Item.Item import Item
+from Characters import *
 
 class Potion(Item):
     def __init__(self, name, description, effect_type, potion_level):
@@ -38,20 +39,21 @@ class Potion(Item):
             if self.effect_type == "heal":
                 for level, value in self.effects[self.effect_type].items():
                     if self.item_level == level:
-                        health_max = player.health
+                        health_max = player.getMaxHealth()
                         player.health = min(player.health + value, health_max)
                         print(f"{player.name} has used {self.name}, restoring {value} health.")
-                        return 
+                        return True
             elif self.effect_type == "mana":
                 for level, value in self.effects[self.effect_type].items():
                     if self.item_level == level:
-                        mana_max = player.mana
+                        mana_max = player.getMaxMana()
                         player.mana = min(player.mana + value, mana_max)
                         print(f"{player.name} has used {self.name}, restoring {value} mana.")
-                        return
+                        return True
             elif self.effect_type == "strength_boost":
                 for level, effect in self.effects[self.effect_type].items():
                     if self.item_level == level:
                         player.strength += effect["value"]
                         print(f"{player.name} has used {self.name}, gaining {effect['value']} strength for {effect['time']} turns.")
-                        return effect["time"], effect["value"]
+                        return effect["time"], effect["value"], True
+        return False

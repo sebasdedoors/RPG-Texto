@@ -5,6 +5,5 @@ class Weapon(Item):
         super().__init__(name, description, weapon_level)
         self.damage = damage
     
-    def use(self, player):
+    def useWeapon(self, player):
         player.strength += self.damage
-        print(f"{player.name} has equipped {self.name}, increasing strength by {self.damage}.")

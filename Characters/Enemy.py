@@ -4,8 +4,8 @@ class Enemy(Character):
     def __init__(self, name, enemy_type):
         super().__init__(name, enemy_type)
         self.enemy_type = enemy_type
-        self.xp_reward = 0
         self.defTypeEnemy(enemy_type)
+        self.xp_reward = self.enemy_types[enemy_type]["xp_reward"]
     
     enemy_types = {
         "goblin": {

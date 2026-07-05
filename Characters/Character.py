@@ -13,5 +13,6 @@ class Character:
         damage = max(1, damage)
         target.health -= damage
         print(f"{self.name} attacks {target.name} for {damage} damage.")
-    
+
+
     
