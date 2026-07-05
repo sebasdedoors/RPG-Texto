@@ -35,16 +35,10 @@ def usePotion(player, potion):
             potion.useItem(player)
 
 def verifyWeapon(player):
-    if player.weapon != None:
-        return True
-    else:
-        return False
+    return player.weapon is not None
 
 def verifyArmor(player):
-    if player.armor != None:
-        return True
-    else:
-        return False
+    return player.armor is not None 
     
 def boostDuration(player, potion):
     if potion.effect_type == "strength_boost":
