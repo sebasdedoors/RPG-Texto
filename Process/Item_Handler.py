@@ -46,5 +46,7 @@ def boostDuration(player, potion):
         if activated:
             for turno in range(time, 0, -1):
                 player.strength += value
+                time -= 1
+                break
         else:
             player.strength -= value
