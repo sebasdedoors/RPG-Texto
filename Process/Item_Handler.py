@@ -1,5 +1,7 @@
-from Item import *
-from Characters import *
+from Item.Armor import Armor
+from Item.Weapon import Weapon
+from Item.Potion import Potion
+from Characters.Player import Player
 
 def useWeapon(player, weapon):
     if weapon in player.inventory:
