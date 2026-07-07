@@ -1,5 +1,5 @@
 from Item.Item import Item
-from Characters import *
+from Characters.Player import Player
 
 class Potion(Item):
     def __init__(self, name, description, effect_type, potion_level):

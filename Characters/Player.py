@@ -45,7 +45,13 @@ class Player(Character):
         print(f"{self.name} has obtained {item.name}. Check it in your inventory!")
     
     def getMaxHealth(self):
-        return self.player_types[self.player_type]["health"] + ((self.level - 1) * 5 + 100)
+        if self.player_type in self.player_types:
+            return self.player_types[self.player_type]["health"] + ((self.level - 1) * 5 + 100)
+        else:
+            return f"Personaje {self.name} no disponible."
     
     def getMaxMana(self):
-        return self.player_types[self.player_type]["mana"] + ((self.level - 1) * 3 + 100)
+        if self.player_type in self.player_types:
+            return self.player_types[self.player_type]["mana"] + ((self.level - 1) * 3 + 100)
+        else:
+            return f"Personaje {self.name} no disponible."

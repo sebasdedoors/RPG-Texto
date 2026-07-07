@@ -1,5 +1,7 @@
-from Characters import *
-from Item import *
+from Characters.Player import Player
+from Characters.Enemy import Enemy
+
+from Item.Weapon import Weapon
 
 
 def killEnemy(player, enemy):

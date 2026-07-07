@@ -1,5 +1,7 @@
-from Item import *
-from Characters import *
+from Item.Armor import Armor
+from Item.Weapon import Weapon
+from Item.Potion import Potion
+from Characters.Player import Player
 
 def useWeapon(player, weapon):
     if weapon in player.inventory:
@@ -42,7 +44,11 @@ def verifyArmor(player):
     
 def boostDuration(player, potion):
     if potion.effect_type == "strength_boost":
-        time, value = potion.use(player)
-        for turno in range(time, 0, -1):
-            pass
-        player.strength -= value
+        time, value, activated = potion.use(player)
+        if activated:
+            for turno in range(time, 0, -1):
+                player.strength += value
+                time -= 1
+                break
+        else:
+            player.strength -= value
